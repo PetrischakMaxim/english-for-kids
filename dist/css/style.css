@@ -1,0 +1,159 @@
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+html > * {
+  box-sizing: inherit;
+}
+
+html > * *::after,
+html > * *::before {
+  box-sizing: inherit;
+}
+
+body {
+  min-width: 300px;
+  height: 100%;
+  min-height: 480px;
+  margin: 0;
+  font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.app__header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.app__main {
+  flex-grow: 1;
+}
+
+/* Category */
+/* Card */
+.card {
+  position: relative;
+  overflow: hidden;
+  background: var(--primary);
+  border-radius: 7.5px;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+  box-shadow: 20px 25px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card:active {
+  background-color: var(--success);
+  box-shadow: 20px 25px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card.is-clicked {
+  background-color: var(--success);
+  transform: scale(-1, 1);
+}
+
+.card.is-clicked .card__name--eng {
+  display: none;
+}
+
+.card.is-clicked .card__name--rus {
+  display: block;
+}
+
+.card.is-clicked .card__toggler {
+  opacity: 0;
+}
+
+.card__wrapper {
+  margin: 0;
+  padding: 1rem;
+}
+
+.card__image {
+  display: block;
+  transition: all 0.5s ease-in;
+}
+
+.card__text {
+  position: relative;
+  padding: 10px 0;
+}
+
+.card__name {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 1.25rem;
+  text-align: center;
+  transition: all 0.25s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.card__name--rus {
+  display: none;
+  transform: scale(-1, 1);
+}
+
+.card__toggler {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 2rem;
+  height: 2rem;
+  background: url(../img/icons/rotate.svg) no-repeat center/contain;
+  border: 0;
+  transform-origin: 50% 50%;
+  opacity: 1;
+}
+
+.card--category {
+  background: linear-gradient(108deg, #2c2676, #23d0ec);
+  background-size: 400% 400%;
+  -webkit-animation: AnimationName 0s ease infinite;
+  animation: AnimationName 0s ease infinite;
+}
+
+.card--category .card__image {
+  width: 170px;
+  height: 170px;
+  margin: 1rem auto;
+  border: 5px solid #ffffff;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 25% 0;
+  }
+  50% {
+    background-position: 76% 100%;
+  }
+  100% {
+    background-position: 25% 0;
+  }
+}
+
+@keyframes AnimationName {
+  0% {
+    background-position: 25% 0;
+  }
+  50% {
+    background-position: 76% 100%;
+  }
+  100% {
+    background-position: 25% 0;
+  }
+}
+/*# sourceMappingURL=style.css.map */
