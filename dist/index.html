@@ -9,7 +9,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- Font & icons -->
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
     <!-- Main styles -->
     <link rel="stylesheet" href="./css/style.css">
@@ -21,13 +21,9 @@
             <div class="collapse bg-primary" id="navbarHeader">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12">
+                        <div id="nav" class="col-12">
                             <h4 class="text-white">Game links</h4>
-                            <ul class="list-unstyled">
-                                <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                                <li><a href="#" class="text-white">Like on Facebook</a></li>
-                                <li><a href="#" class="text-white">Email me</a></li>
-                            </ul>
+                            
                         </div>
                     </div>
                 </div>
@@ -49,7 +45,9 @@
             <div class="cards-list">
                 <div class="container">
                     <div id="root" class="row justify-content-center align-content-start">
-
+                        <div class="loader">
+                            <img src="./img/spinner.svg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -64,8 +62,8 @@
     </div>
     <template id="card-template">
         <div class="mb-1 col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card  m-1">
-                <figure class="card__wrapper" data-lang="eng">
+            <div class="card card--item m-1">
+                <figure class="card__wrapper">
                     <img class="card__image img-fluid" src="#" alt="">
                     <figcaption class=" card__text text-light">
                         <p class="card__name card__name--eng" data-lang="eng"></p>
@@ -78,7 +76,7 @@
         </div>
     </template>
     <template id="card-category-template">
-        <div class="mb-1 col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="category mb-1 col-12 col-sm-6 col-md-4 col-lg-3">
             <div class="card card--category  m-1">
                 <figure class="card__wrapper">
                     <img class="card__image img-fluid" src="#" alt="">

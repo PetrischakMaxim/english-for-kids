@@ -27,15 +27,18 @@ body {
   min-height: 100%;
 }
 
-.app__header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 1;
+.app__main {
+  flex: 1 0 auto;
 }
 
-.app__main {
-  flex-grow: 1;
+.app__footer {
+  flex: 0 0 auto;
+}
+
+.app__navigation a {
+  display: block;
+  color: #ffffff;
+  cursor: pointer;
 }
 
 /* Category */
@@ -49,6 +52,7 @@ body {
   transform-style: preserve-3d;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: auto;
 }
 
 .card:hover {
@@ -63,6 +67,7 @@ body {
 .card.is-clicked {
   background-color: var(--success);
   transform: scale(-1, 1);
+  pointer-events: none;
 }
 
 .card.is-clicked .card__name--eng {
@@ -80,6 +85,7 @@ body {
 .card__wrapper {
   margin: 0;
   padding: 1rem;
+  pointer-events: none;
 }
 
 .card__image {
@@ -120,8 +126,8 @@ body {
 .card--category {
   background: linear-gradient(108deg, #2c2676, #23d0ec);
   background-size: 400% 400%;
-  -webkit-animation: AnimationName 0s ease infinite;
-  animation: AnimationName 0s ease infinite;
+  -webkit-animation: AnimationName 5s ease infinite;
+  animation: AnimationName 5s ease infinite;
 }
 
 .card--category .card__image {
@@ -155,5 +161,23 @@ body {
   100% {
     background-position: 25% 0;
   }
+}
+
+.loader {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  opacity: 1;
+  transition: opacity 0.1s ease;
+}
+
+.loader.hidden {
+  z-index: -10;
+  opacity: 0;
 }
 /*# sourceMappingURL=style.css.map */
