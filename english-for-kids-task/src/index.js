@@ -4,7 +4,7 @@ import createCardsTemplate from './modules/createCardsTemplate';
 
 const [categories, ...cards] = cardsData;
 const root = document.querySelector('#root');
-const loader = root.querySelector('.loader');
+const loader = document.querySelector('.loader');
 
 function toggleLoader() {
   loader.classList.toggle('hidden');
@@ -34,22 +34,39 @@ function createNavigation() {
 renderCategories();
 createNavigation();
 
-root.addEventListener('click', evt => {
+/* Toggle navbar */
+const navToggler = document.querySelector('.navbar-toggler');
+const headerNav = document.querySelector('#navbarHeader');
+navToggler.addEventListener('click', () => headerNav.classList.toggle('show'));
+
+document.body.addEventListener('click', evt => {
   const currentTarget = evt.target;
+
+  /* Toggle state cards */
   if (currentTarget.dataset.category) {
-    root.querySelectorAll('.category').forEach(el => el.remove());
-    setTimeout(toggleLoader, 0);
+    const stateClass = 'disabled';
+    toggleLoader();
+    currentTarget.classList.add(stateClass);
+    Array.from(root.children).forEach(el => el.remove());
     setTimeout(() => {
       root.append(createCardsTemplate(cards[currentTarget.dataset.category]));
     }, 100);
-    setTimeout(toggleLoader, 1000);
+    currentTarget.classList.remove(stateClass);
+    headerNav.classList.remove('show');
+    setTimeout(toggleLoader, 750);
   }
+  /* Flip cards */
   if (currentTarget.classList.contains('card__toggler')) {
-    currentTarget.closest('.card').classList.add('is-clicked');
-    setTimeout(() => {
-      currentTarget.closest('.card').classList.remove('is-clicked');
-    }, 1500);
+    const stateClass = 'is-clicked';
+    const cardSelector = '.card';
+
+    currentTarget.closest(cardSelector).classList.add(stateClass);
+    setTimeout(
+      () => currentTarget.closest(cardSelector).classList.remove(stateClass),
+      1500
+    );
   }
+  /* Play track */
   if (currentTarget.classList.contains('card--item')) {
     currentTarget.querySelector('audio').play();
   }

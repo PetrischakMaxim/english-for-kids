@@ -25,15 +25,16 @@ body {
 .app {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 100%;
 }
-.app__main {
+.app__wrapper {
   flex: 1 0 auto;
 }
 .app__footer {
-  flex: 0 0 auto;
+  flex-shrink: 0;
+
+  background: cadetblue;
 }
+
 .app__navigation {
   a {
     display: block;
@@ -55,19 +56,20 @@ body {
   background: var(--primary);
   border-radius: 7.5px;
   transform-origin: 50% 50%;
+  backface-visibility: hidden;
   transform-style: preserve-3d;
   cursor: pointer;
 
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.1s ease;
 
   pointer-events: auto;
   &:hover {
-    box-shadow: 20px 25px 20px rgba(#000000, 0.5);
+    box-shadow: 5px 5px 5px rgba(#000000, 0.1);
   }
 
   &:active {
     background-color: var(--success);
-    box-shadow: 20px 25px 20px rgba(#000000, 0.5);
+    box-shadow: 5px 5px 5px rgba(#000000, 0.1);
   }
   &.is-clicked {
     background-color: var(--success);
@@ -110,8 +112,7 @@ body {
   font-size: 1.25rem;
   text-align: center;
 
-  transition: all 0.25s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-
+  backface-visibility: hidden;
   &--rus {
     display: none;
 
@@ -174,9 +175,12 @@ body {
   }
 }
 
+/* Loader */
 
 .loader {
   position: absolute;
+  top: 0;
+  left: 0;
   z-index: 1;
 
   display: flex;
@@ -194,4 +198,8 @@ body {
 
     opacity: 0;
   }
+}
+
+.disabled {
+  pointer-events: none;
 }
