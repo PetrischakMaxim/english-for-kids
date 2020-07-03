@@ -12,9 +12,7 @@
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
     <!-- Main styles -->
-    <link
-        href="data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAA7X24Aa6e8AFZuiABacYgAuLXSAJOzzQCVts0AmLPNAJe2zQCas80A/P7/AJq1ygCInbkAnrXKAEpqfQA+KZwA7ezuAEVygwBJcYAAEBUSABIUDwBJc4YAepauAGmrwABXcowANxWgAHCrwABuiKAAiZW0AC9VZACZtcsAmrbOAFt1pwBGcH4A7OzvAEZxgQBLbX4ASHGBAHeSrAAUFBAAQlZnAI6swwA9X3AAVG2HAFlzhwDP0NwAlbXMAJa1zABHcYIASXB/AGmktgBOc38AExUUAI2rwQBzZqgAaKvCAGmrwgA1FJ8A+fr/AJi1zQA6KZYAmrXNAIehtgCcuM0APSicAENxgwBFcIAAUl2GAKC20ADw8voAOVONAEd+mACAmrQAl7XOAObr7wA7KpoARG9+AEhrewA9KpoARXCBAEhxhAAOGRkAiarJAJWqtwBdh6oAQWF5AHGrxACWtMwAl7TMAJi0zABMiJwARW9/AEVwggDt7e0AQCyYAEhwggAOFQ4ADxUOABIWEQBOcYUAUXOCAFmRpQBqrL8AaqrCADYTnwCUs8oAlbPKAIiUtgCJlrMAlbbKADY4fgCVtM0AOS2TAJu0zQA7KZkA7e3uAEhwgwBKcoAAp7nKABUaFQBqqsMAOROgAF9tjACUtssAlrbLAJe0zgA7KJcAOimaADspmgA9KZoAR2+BAG2swQBAV4sAWnKKAJizzACYtswA/v7+AEVtfAA6L5IAOymbADsrmACestIAfqvHAHWPqgB5kKQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXYiAf4yEBmtscXJLPItdiIhdgIBOjBw7BwyKQICAiF1diH5OgX09L2kJjQ+ANl2IiF2Ic15uL0gYWHAEiF2IXV2IXYhdiHoCK0NdiF2IXYiIXYhdiC1Jj0QmOl2IXYhdXYgQTQ4bhx6GWT4kJQpdiIgiHV+Qb1dqKRZtUyFkRV1dVoIjYVgLHw0/e2BPMFKIiF0REhQsfC4oL4VhQiqIXV2IShUzEwV2Awg0dFwKXYiIXYhdiTFRYid3dQCIXYhdXYhdiFRGUEx0QSBVXYhdiIhdiF1HZXk5aBkyW4hdiF1diF2IgwFaODcaZmNdiF2IiF2IXYg1F2d4OI5diF2IXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
-        rel="icon" type="image/x-icon" />
+    <link href="./img/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -22,26 +20,21 @@
 
     <div class="app__wrapper">
         <header class="app__header">
-            <div class="collapse bg-primary" id="navbarHeader">
-                <div class="container">
-                    <div class="row">
-                        <div id="nav" class="col-12">
-                            <h4 class="text-white">Game links</h4>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="navbar navbar-dark bg-primary shadow-sm">
-                <div class="container d-flex justify-content-between">
-                    <a href="#" class="navbar-brand d-flex align-items-center">
-                        <strong>English for kids App</strong>
+                <div class="container">
+                    <a href="#" class="navbar-brand">
+                        <strong>App</strong>
                     </a>
                     <button class="navbar-toggler text-white" type="button" data-toggle="collapse"
                         data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+                    <div class="collapse nav-container" id="navbarHeader">
+                        <div id="nav" class="col-12">
+                            <h4 class="text-dark">Words links</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
@@ -77,6 +70,7 @@
                     </figcaption>
                 </figure>
                 <button class="card__toggler"></button>
+
                 <audio preload="metadata" src="#"></audio>
             </div>
         </div>
