@@ -1,73 +1,58 @@
+import appendCards from './modules/appendCards';
 import cardsData from './modules/cardsData';
-import createCategoryTemplate from './modules/createCategoryTemplate';
 import createCardsTemplate from './modules/createCardsTemplate';
+import createNavigation from './modules/createNavigation';
+import disableCards from './modules/disableCards';
+import enableCards from './modules/enableCards';
+import flipCard from './modules/flipCard';
+import playCardName from './modules/playCardName';
+import renderCategories from './modules/renderCategories';
+import toggleLoader from './modules/toggleLoader';
+import toggleNavigation from './modules/toggleNavigation';
 
-const [categories, ...cards] = cardsData;
+const options = {
+  delay: 1000,
+  visibleClass: 'show',
+  disableClass: 'disabled',
+};
+const { delay, visibleClass, disableClass } = options;
+const [, ...cards] = cardsData;
 const root = document.querySelector('#root');
-const loader = document.querySelector('.loader');
-
-function toggleLoader() {
-  loader.classList.toggle('hidden');
-}
-
-function renderCategories() {
-  const categoryTemplate = createCategoryTemplate(categories, cards);
-  root.append(categoryTemplate);
-  setTimeout(toggleLoader, 1500);
-}
-
-function createNavigation() {
-  const navigation = new DocumentFragment();
-  const nav = document.createElement('nav');
-  nav.classList.add('app__navigation');
-  document.querySelectorAll('.card--category').forEach(card => {
-    const link = document.createElement('a');
-    link.dataset.category = card.dataset.category;
-    link.textContent = card.querySelector('.card__name').textContent;
-    nav.append(link);
-  });
-  navigation.append(nav);
-  document.querySelector('#nav').append(navigation);
-}
-
 /* Run */
-renderCategories();
+renderCategories(root, toggleLoader);
 createNavigation();
 
 /* Toggle navbar */
 const navToggler = document.querySelector('.navbar-toggler');
 const headerNav = document.querySelector('#navbarHeader');
-navToggler.addEventListener('click', () => headerNav.classList.toggle('show'));
+
+navToggler.addEventListener('click', () =>
+  toggleNavigation(headerNav, visibleClass)
+);
 
 document.body.addEventListener('click', evt => {
   const currentTarget = evt.target;
-
   /* Toggle state cards */
   if (currentTarget.dataset.category) {
-    const stateClass = 'disabled';
+    const newCategories = createCardsTemplate(
+      cards[currentTarget.dataset.category]
+    );
     toggleLoader();
-    currentTarget.classList.add(stateClass);
-    Array.from(root.children).forEach(el => el.remove());
-    setTimeout(() => {
-      root.append(createCardsTemplate(cards[currentTarget.dataset.category]));
-    }, 100);
-    currentTarget.classList.remove(stateClass);
-    headerNav.classList.remove('show');
-    setTimeout(toggleLoader, 750);
+    [...root.children].forEach(el => el.remove());
+    appendCards(root, newCategories, delay);
+    headerNav.classList.remove(visibleClass);
+    setTimeout(toggleLoader, delay);
   }
   /* Flip cards */
   if (currentTarget.classList.contains('card__toggler')) {
-    const stateClass = 'is-clicked';
-    const cardSelector = '.card';
-
-    currentTarget.closest(cardSelector).classList.add(stateClass);
-    setTimeout(
-      () => currentTarget.closest(cardSelector).classList.remove(stateClass),
-      1500
-    );
+    flipCard(currentTarget, 'is-clicked', '.card', delay);
   }
   /* Play track */
   if (currentTarget.classList.contains('card--item')) {
-    currentTarget.querySelector('audio').play();
+    const cells = root.querySelectorAll('.card');
+    const currentTrack = currentTarget.querySelector('audio');
+    disableCards(cells, disableClass);
+    playCardName(currentTrack);
+    enableCards(currentTrack, cells, disableClass);
   }
 });
